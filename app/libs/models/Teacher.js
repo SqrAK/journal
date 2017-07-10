@@ -7,3 +7,7 @@ let teacherSchema = {
     name: Sequelize.STRING
 };
 module.exports = sequelize.define('Teacher', teacherSchema);
+
+
+
+

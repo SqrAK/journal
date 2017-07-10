@@ -38,6 +38,7 @@ $(document).ready(function () {
     }
 
 
+
     $('.reset-filter').click(function () {
         $(".filter-name").val("");
         filters = [];

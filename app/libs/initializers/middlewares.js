@@ -58,20 +58,13 @@ module.exports = async app => {
     app.use(app.route);
 
 
+    // models.Teacher.hasMany(models.Student);
+    // models.Mark.belongsTo(models.Student);
+    // models.Mark.belongsTo(models.Subject);
+
     app.use(bodyParser.urlencoded({extended: false}));
     app.use(bodyParser.json());
 
-    // app.post('/login',function(req,res){
-    //     var user_name=req.body.user;
-    //     var password=req.body.password;
-    //     console.log("User name = "+user_name+", password is "+password);
-    //     res.end("yes");
-    // });
-
-    // models.Mark.findAll({ include: [ models.Student ] }).then(tasks => {
-    //     console.log(JSON.stringify(tasks))
-    //
-    // })
 
     app.post('/loadmarks', function (req, res) {
         models.Mark.findAll({
@@ -84,15 +77,11 @@ module.exports = async app => {
             // }]
             // ,
             // where: {
-            //     idSubject: req.body.subjectId
             //
-            // }
-
 
         }).then(tasks => {
             res.json(tasks);
         });
-
     });
 
 
