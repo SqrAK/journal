@@ -1,0 +1,47 @@
+version: '2'
+services:
+  journal:
+    build:
+      context: .
+      dockerfile: journal.dockerfile
+    
+    command: nodemon -L -e js,json --debug=5858 --harmony-async-await app/main.js
+    
+    image: journal:development
+    volumes:
+      - "./app:/usr/src/journal/app"
+    container_name: journal
+    environment:
+      NODE_ENV: "development"
+      
+      
+      "sequelize:uri": "postgres://postgres@journal-postgres:5432/journaldb"
+      
+      
+      
+      PORT: 3000
+    ports:
+      - "3000:3000"
+      - "5858:5858"
+    
+    entrypoint: /usr/src/journal/wait-for-it.sh
+    
+    links:
+    
+    
+      - journal-postgres
+    
+    
+    
+  
+  
+  journal-postgres:
+    image: postgres
+    container_name: journal-postgres
+    environment:
+      POSTGRES_DB: "journaldb"
+    ports:
+      - "5432"
+  
+  
+  

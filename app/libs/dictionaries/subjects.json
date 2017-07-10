@@ -1,0 +1,14 @@
+{
+  "model": "Subject",
+  "entities": [
+     {
+      "subjName": "Математика"    
+    },
+    {
+      "subjName": "Физика"
+    },
+    {
+      "subjName": "Информатика"
+    }
+  ]
+}

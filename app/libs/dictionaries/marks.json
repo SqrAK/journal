@@ -1,0 +1,47 @@
+{
+  "model": "Mark",
+  "entities": [
+    {
+      "idStudent": "1",
+      "idSubject": "1",
+      "date": "1298-01-01T00:00:00Z",
+	  "mark": "5"
+    },
+    {
+      "idStudent": "2",
+      "idSubject": "1",
+      "date": "1298-01-01T00:00:00Z",
+	  "mark": "5"
+    },
+	{
+      "idStudent": "3",
+      "idSubject": "1",
+      "date": "1298-01-01T00:00:00Z",
+	  "mark": "5"
+    },
+	{
+      "idStudent": "4",
+      "idSubject": "1",
+      "date": "1298-01-01T00:00:00Z",
+	  "mark": "5"
+    },
+	{
+      "idStudent": "5",
+      "idSubject": "1",
+      "date": "1298-01-01T00:00:00Z",
+	  "mark": "5"
+    },
+	{
+      "idStudent": "1",
+      "idSubject": "2",
+      "date": "1298-01-01T00:00:00Z",
+	  "mark": "5"
+    },
+    {
+      "idStudent": "1",
+      "idSubject": "3",
+      "date": "1298-01-01T00:00:00Z",
+	  "mark": "5"
+    }
+  ]
+}
