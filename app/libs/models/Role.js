@@ -1,10 +1,9 @@
-
 'use strict';
 
 const sequelize = require('utils/sequelize'),
     Sequelize = require('sequelize');
 
-let subjectSchema = {
+let roleSchema = {
     name: Sequelize.STRING
 };
-module.exports = sequelize.define('Subject', subjectSchema);
+module.exports = sequelize.define('Role', roleSchema);

@@ -2,25 +2,114 @@
   "model": "User",
   "entities": [
     {
-      "login": "BarsicUser",
-      "password": "sosiska",
-      "email": "barsic@sosiska.cat",
+      "first_name": "Мария" ,
+      "last_name": "Ивановна",
+      "login": "МарьВанна",
+      "password": "",
+      "email": "",
       "status": "ACTIVE",
-      "verified": true
+      "verified": true,
+      "role_id":2
     },
     {
-      "login": "PushokUser",
-      "password": "sordelka",
-      "email": "pushok@sordelka.cat",
+      "first_name": "Сергей" ,
+      "last_name": "Петров",
+      "login": "",
+      "password": "",
+      "email": "",
       "status": "ACTIVE",
-      "verified": true
+      "verified": true,
+      "role_id":1
     },
     {
-      "login": "MurkaUser",
-      "password": "kotletka",
-      "email": "murka@kotletka.cat",
-      "status": "BLOCKED",
-      "verified": true
+      "first_name": "Сергей" ,
+      "last_name": "Иванов",
+      "login": "",
+      "password": "",
+      "email": "",
+      "status": "ACTIVE",
+      "verified": true,
+      "role_id":1
+    },
+    {
+      "first_name": "Сергей" ,
+      "last_name": "Сидоров",
+      "login": "",
+      "password": "",
+      "email": "",
+      "status": "ACTIVE",
+      "verified": true,
+      "role_id":1
+    },
+    {
+      "first_name": "Егор" ,
+      "last_name": "Ушаков",
+      "login": "",
+      "password": "",
+      "email": "",
+      "status": "ACTIVE",
+      "verified": true,
+      "role_id":1
+    },
+    {
+      "first_name": "Ксения" ,
+      "last_name": "Гаврилова",
+      "login": "",
+      "password": "",
+      "email": "",
+      "status": "ACTIVE",
+      "verified": true,
+      "role_id":1
+    },
+    {
+      "first_name": "Сергей" ,
+      "last_name": "Марков",
+      "login": "",
+      "password": "",
+      "email": "",
+      "status": "ACTIVE",
+      "verified": true,
+      "role_id":1
+    },
+    {
+      "first_name": "Даша" ,
+      "last_name": "Тюрина",
+      "login": "",
+      "password": "",
+      "email": "",
+      "status": "ACTIVE",
+      "verified": true,
+      "role_id":1
+    },
+    {
+      "first_name": "Дарья" ,
+      "last_name": "Шишкина",
+      "login": "",
+      "password": "",
+      "email": "",
+      "status": "ACTIVE",
+      "verified": true,
+      "role_id":1
+    },
+    {
+      "first_name": "Максим" ,
+      "last_name": "Голубев",
+      "login": "",
+      "password": "",
+      "email": "",
+      "status": "ACTIVE",
+      "verified": true,
+      "role_id":1
+    },
+    {
+      "first_name": "Михаил" ,
+      "last_name": "Ивановна",
+      "login": "",
+      "password": "",
+      "email": "",
+      "status": "ACTIVE",
+      "verified": true,
+      "role_id":1
     }
   ]
 }

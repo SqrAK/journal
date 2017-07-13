@@ -2,46 +2,36 @@
   "model": "Mark",
   "entities": [
     {
-      "idStudent": "1",
-      "idSubject": "1",
+      "value": 5,
       "date": "1298-01-01T00:00:00Z",
-	  "mark": "5"
+      "subject_id":1,
+      "class_id": 1,
+      "student_id": 2,
+      "teacher_id": 1
     },
     {
-      "idStudent": "2",
-      "idSubject": "1",
+      "value": 4,
       "date": "1298-01-01T00:00:00Z",
-	  "mark": "5"
-    },
-	{
-      "idStudent": "3",
-      "idSubject": "1",
-      "date": "1298-01-01T00:00:00Z",
-	  "mark": "5"
-    },
-	{
-      "idStudent": "4",
-      "idSubject": "1",
-      "date": "1298-01-01T00:00:00Z",
-	  "mark": "5"
-    },
-	{
-      "idStudent": "5",
-      "idSubject": "1",
-      "date": "1298-01-01T00:00:00Z",
-	  "mark": "5"
-    },
-	{
-      "idStudent": "1",
-      "idSubject": "2",
-      "date": "1298-01-01T00:00:00Z",
-	  "mark": "5"
+      "subject_id":2,
+      "class_id": 1,
+      "student_id": 4,
+      "teacher_id": 1
     },
     {
-      "idStudent": "1",
-      "idSubject": "3",
+      "value": 3,
       "date": "1298-01-01T00:00:00Z",
-	  "mark": "5"
+      "subject_id":3,
+      "class_id": 1,
+      "student_id": 3,
+      "teacher_id": 1
+    },
+    {
+      "value": 5,
+      "date": "1298-01-01T00:00:00Z",
+      "subject_id":1,
+      "class_id": 1,
+      "student_id": 5,
+      "teacher_id": 1
     }
   ]
 }

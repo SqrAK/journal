@@ -1,0 +1,17 @@
+{
+  "model": "Class",
+  "entities": [
+    {
+      "subject_id": 1,
+      "number": 56
+    },
+    {
+      "subject_id": 2,
+      "number": 13
+    },
+    {
+      "subject_id": 3,
+      "number": 18
+    }
+  ]
+}

@@ -22,7 +22,7 @@ const path = require('path')
  */
 function notFoundHandler(req, res, next) {
     //res.end('dfdafadfdfadsfasf');
-    res.sendFile( path.join(__dirname, '../../web', 'index.html'));
+    res.sendFile( path.join(__dirname, '../../public', 'index.html'));
     //logger.error('middlewares.notFoundHandler');
     //next(new errors.NotFoundError());
 }

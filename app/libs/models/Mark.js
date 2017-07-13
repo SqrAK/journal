@@ -4,9 +4,12 @@ const sequelize = require('utils/sequelize'),
     Sequelize = require('sequelize');
 
 let markSchema = {
-    idStudent: Sequelize.UUID,
-    idSubject: Sequelize.UUID,
+    value: { type: Sequelize.INTEGER
+    },
     date: Sequelize.DATE,
-    mark: Sequelize.INTEGER
+    subject_id:  { type: Sequelize.INTEGER},
+    class_id:  { type: Sequelize.INTEGER},
+    student_id: { type: Sequelize.INTEGER},
+    teacher_id: { type: Sequelize.INTEGER}
 };
 module.exports = sequelize.define('Mark', markSchema);

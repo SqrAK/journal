@@ -20,7 +20,7 @@
       "console": {
         "level": "debug",
         "colorize": true,
-        "label": "app",
+        "label": "server",
         "timestamp": true
       }
     },

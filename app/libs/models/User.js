@@ -4,6 +4,7 @@ const promise = require('utils/promise'),
     sequelize = require('utils/sequelize'),
     Sequelize = require('sequelize'),
     bcrypt = require('utils/bcrypt'),
+    role = require('models/Role'),
     SALT_WORK_FACTOR = 10;
 
 /**
@@ -12,6 +13,14 @@ const promise = require('utils/promise'),
  */
 
 let userModel = sequelize.define('User', {
+    first_name: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    last_name: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
     login: {
         type: Sequelize.STRING,
         allowNull: false
@@ -34,6 +43,9 @@ let userModel = sequelize.define('User', {
     },
     verifyToken: {
         type: Sequelize.STRING
+    },
+    role_id: {
+        type: Sequelize.INTEGER
     },
     status: {
         type: Sequelize.ENUM,

@@ -7,7 +7,8 @@
 const logger = require('utils/logger').app,
     routeBuilder = require('utils/route-builder'),
     path = require('path'),
-    _ = require('lodash');
+    _ = require('lodash'),
+    express = require('express');
 
 function createRoutes(app) {
 
@@ -19,11 +20,13 @@ function createRoutes(app) {
         {url: '/api/v1/cats', file: '/api/v1/cats'}
     ];
 
+
     _(endpoints)
         .each(endpoint => {
             app.use(endpoint.url, routeBuilder.createRoute(path.join(__dirname, endpoint.file)));
             logger.info('Endpoint added:', endpoint.url);
         });
+    app.use( express.static(path.join(__dirname, '../../public')));
 }
 
 module.exports = {
