@@ -6,7 +6,7 @@
 
 require('app-module-path').addPath(__dirname + '/libs');
 
-const app = require('express')(),
+const server = require('express')(),
     logger = require('utils/logger').app,
     config = require('utils/config'),
     initializers = require('initializers');
@@ -14,14 +14,14 @@ const app = require('express')(),
 async function main() {
 
     // Execute initializers
-    await initializers.sequelize(app);
-    await initializers.models(app);
-    await initializers.dictionaries(app);
-    await initializers.middlewares(app);
-    await initializers.routes(app);
+    await initializers.sequelize(server);
+    await initializers.models(server);
+    await initializers.dictionaries(server);
+    await initializers.middlewares(server);
+    await initializers.routes(server);
 
     await new Promise((resolve, reject) =>
-        app
+        server
         .listen(config.get('express:port'), resolve)
         .on('error', reject));
 
