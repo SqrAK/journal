@@ -1,7 +1,6 @@
 var subjects;
 $(document).ready(function () {
 
-    // createTableMarks();
     createSubjectSelect();
 
     $.get("http://localhost:3000/students", function (students) {
@@ -14,6 +13,7 @@ $(document).ready(function () {
 
     $.post("http://localhost:3000/marks", {name: "Математика"}, function (data) {
         console.log(data);
+        createTableMarks(data);
     });
 
 
@@ -48,80 +48,75 @@ $(document).ready(function () {
 
     }
 
-    function createTableMarks() {
+    function createTableMarks(marks) {
         //change query
-        $.get("http://localhost:3000/marks", function (marks) {
 
-            console.log(marks);
+            var Thead = React.createClass({
+                render: function () {
 
-            // var Thead = React.createClass({
-            //     render: function () {
-            //
-            //         return (
-            //             <thead>
-            //             <tr>
-            //                 <th className="not-sort">Фамилия Имя Отчество</th>
-            //                 <th className="not-sort">Дата получения оценки</th>
-            //                 <th className="not-sort">Оценка</th>
-            //             </tr>
-            //             </thead>
-            //
-            //         );
-            //     }
-            // });
-            //
-            // var Students = React.createClass({
-            //     render: function () {
-            //         var data = this.props.data;
-            //
-            //         var studentsTemplate = data.map(function (item, index) {
-            //             return (
-            //                 <tr key={index}>
-            //                     <td>
-            //                         {item.name}
-            //                     </td>
-            //                     <td>
-            //                         Дата
-            //                     </td>
-            //                     <td>
-            //                         Оценка
-            //                     </td>
-            //                 </tr>
-            //             )
-            //         });
-            //
-            //         return (
-            //             <tbody>
-            //             {studentsTemplate}
-            //             </tbody>
-            //
-            //         );
-            //     }
-            // });
-            //
-            // var Table = React.createClass({
-            //     componentDidMount: function () {
-            //         // $(".table").tablesorter();
-            //     },
-            //     render: function () {
-            //
-            //         return (
-            //             <table className="table table-bordered">
-            //                 <Thead />
-            //                 <Students data={students}/>
-            //             </table>
-            //
-            //         );
-            //     }
-            // });
-            //
-            // ReactDOM.render(
-            //     <Table />,
-            //     document.getElementById('table')
-            // );
+                    return (
+                        <thead>
+                        <tr>
+                            <th className="not-sort">Фамилия Имя Отчество</th>
+                            <th className="not-sort">Дата получения оценки</th>
+                            <th className="not-sort">Оценка</th>
+                        </tr>
+                        </thead>
 
+                    );
+                }
+            });
 
-        });
+            var Marks = React.createClass({
+                render: function () {
+                    var data = this.props.data;
+
+                    var marksTemplate = data.map(function (item, index) {
+                        return (
+                            <tr key={index}>
+                                <td>
+                                    {item.User.first_name + ' ' +item.User.last_name}
+                                </td>
+                                <td>
+                                    {item.date}
+                                </td>
+                                <td>
+                                    {item.value}
+                                </td>
+                            </tr>
+                        )
+                    });
+
+                    return (
+                        <tbody>
+                        {marksTemplate}
+                        </tbody>
+
+                    );
+                }
+            });
+
+            var Table = React.createClass({
+                componentDidMount: function () {
+                    // $(".table").tablesorter();
+                },
+                render: function () {
+
+                    return (
+                        <table className="table table-bordered">
+                            <Thead />
+                            <Marks data={marks}/>
+                        </table>
+
+                    );
+                }
+            });
+
+            ReactDOM.render(
+                <Table />,
+                document.getElementById('table')
+            );
+
     }
 
     function createStudentsTable() {
@@ -198,6 +193,9 @@ $(document).ready(function () {
                 onChangeHandler: function (e) {
                     //Change subject
                     alert("Change subject");
+                    $.post("http://localhost:3000/marks", {name: "Математика"}, function (data) {
+                        createTableMarks(data);
+                    });
                 },
                 render: function () {
                     var data = this.props.data;

@@ -21,16 +21,11 @@
           "name": {
             "type": "String"
           },
-          "bossName": {
-            "type": "String"
-          },
           "sort": {
             "type": "string",
             "required": false,
             "enum": [
-              "name",
-              "bossName",
-              "birthDate"
+              "name"
             ]
           },
           "direction": {
@@ -74,12 +69,6 @@
           "name": {
             "type": "String",
             "required": true
-          },
-          "bossName": {
-            "type": "String"
-          },
-          "birthDate": {
-            "type": "date-time"
           }
         }
       }
@@ -106,12 +95,6 @@
         "properties": {
           "name": {
             "type": "String"
-          },
-          "bossName": {
-            "type": "String"
-          },
-          "birthDate": {
-            "type": "date-time"
           }
         }
       }

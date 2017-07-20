@@ -7,4 +7,5 @@ const sequelize = require('utils/sequelize'),
 let subjectSchema = {
     name: Sequelize.STRING
 };
+
 module.exports = sequelize.define('Subject', subjectSchema);

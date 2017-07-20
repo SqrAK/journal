@@ -18,7 +18,13 @@ function createRoutes(app) {
         {url: '/api/v1/system-info', file: '/api/v1/system-info'},
         {url: '/api/v1/user', file: '/api/v1/user'},
         {url: '/api/v1/security', file: '/api/v1/security'},
-        {url: '/api/v1/cats', file: '/api/v1/cats'}
+        {url: '/api/v1/cats', file: '/api/v1/cats'},
+        {url: '/api/v1/subject', file: '/api/v1/subject'},
+        {url: '/api/v1/role', file: '/api/v1/role'},
+        {url: '/api/v1/mark', file: '/api/v1/mark'},
+        {url: '/api/v1/lesson', file: '/api/v1/lesson'}
+        // {url: '/api/v1/class', file: '/api/v1/class'}
+
     ];
 
 
@@ -33,60 +39,21 @@ function createRoutes(app) {
     app.use(bodyParser.urlencoded({extended: false}));
     app.use(bodyParser.json());
 
-    app.post('/authenticate', function (req, res) {
-
-        // find the user
-        User.findOne({
-            name: req.body.name
-        }, function (err, user) {
-
-            if (err) throw err;
-
-            if (!user) {
-                res.json({success: false, message: 'Authentication failed. User not found.'});
-            } else if (user) {
-
-                // check if password matches
-                if (user.password != req.body.password) {
-                    res.json({success: false, message: 'Authentication failed. Wrong password.'});
-                } else {
-
-                    // if user is found and password is right
-                    // create a token
-                    var token = jwt.sign(user, app.get('superSecret'), {
-                        expiresInMinutes: 1440 // expires in 24 hours
-                    });
-
-                    // return the information including token as JSON
-                    res.json({
-                        success: true,
-                        message: 'Enjoy your token!',
-                        token: token
-                    });
-                }
-
-            }
-
-        });
-    });
-
-
     app.post('/marks', function (req, res) {
         models.Mark.findAll({
-            // include: [
-            //     {
-            //         model: models.User,
-            //         include: [{
-            //             model: models.Role,
-            //             where: {name: "Ученик"}
-            //         }]
-            //
-            //     },
-            //     {
-            //         model: models.Subject,
-            //         where: { name: req.body.name }
-            //     }
-            // ]
+            // include: [{ all: true, nested: true }]
+            include: [
+                {
+                    model: models.User
+                    // as: 'Student'
+
+                },
+
+                {
+                    model: models.Subject,
+                    where: { name: req.body.name }
+                }
+            ]
         }).then(function (subj) {
                 res.json(subj);
             });

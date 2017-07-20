@@ -3,6 +3,7 @@
 const fs = require('fs'),
     path = require('path'),
     _ =  require('lodash');
+let sequelize = require('utils/sequelize');
 
 /**
  * Requires all files (instead of index.js) in passed module directory and returns it as assotiated array.
@@ -17,6 +18,7 @@ function packModule(dirname, transformFn = _.camelCase) {
         .readdirSync(dirname)
         .filter(file => (file.indexOf('.') !== 0) && (file !== 'index.js'))
         .forEach(file => classes[transformFn(path.parse(file).name)] = require(path.join(dirname, file)));
+    // sequelize.sync();
     return classes;
 }
 

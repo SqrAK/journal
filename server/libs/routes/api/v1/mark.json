@@ -1,0 +1,156 @@
+{
+  "list": {
+    "method": "get",
+    "url": "/",
+    "secured": false,
+    "scheme": {
+      "query": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "skip": {
+            "type": "string",
+            "required": false,
+            "pattern": "^[0-9]+$"
+          },
+          "limit": {
+            "type": "string",
+            "required": false,
+            "pattern": "^[0-9]+$"
+          },
+          "value": {
+            "type": "Integer"
+          },
+          "sort": {
+            "type": "string",
+            "required": false,
+            "enum": [
+              "value",
+              "date",
+              "teacher_id",
+              "class_id",
+              "subject_id",
+              "student_id"
+            ]
+          },
+          "direction": {
+            "type": "string",
+            "required": false,
+            "enum": [
+              "asc",
+              "desc"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "get": {
+    "method": "get",
+    "url": "/:id",
+    "secured": false,
+    "scheme": {
+      "params": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "required": true
+          }
+        }
+      }
+    }
+  },
+  "create": {
+    "method": "post",
+    "url": "/",
+    "secured": false,
+    "scheme": {
+      "body": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "value": {
+            "type": "Integer",
+            "required": true
+          },
+          "student_id": {
+            "type": "Integer"
+          },
+          "class_id": {
+            "type": "Integer"
+          },
+          "teacher_id": {
+            "type": "Integer"
+          },
+          "subject_id": {
+            "type": "Integer"
+          },
+          "date": {
+            "type": "date-time"
+          }
+        }
+      }
+    }
+  },
+  "update": {
+    "method": "put",
+    "url": "/:id",
+    "secured": false,
+    "scheme": {
+      "params": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "required": true
+          }
+        }
+      },
+      "body": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "value": {
+            "type": "Integer",
+            "required": true
+          },
+          "student_id": {
+            "type": "Integer"
+          },
+          "class_id": {
+            "type": "Integer"
+          },
+          "teacher_id": {
+            "type": "Integer"
+          },
+          "subject_id": {
+            "type": "Integer"
+          },
+          "date": {
+            "type": "date-time"
+          }
+        }
+      }
+    }
+  },
+  "remove": {
+    "method": "delete",
+    "url": "/:id",
+    "secured": false,
+    "scheme": {
+      "params": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "required": true
+          }
+        }
+      }
+    }
+  }
+}
