@@ -126,13 +126,14 @@ async function create(req, res) {
 async function update(req, res) {
     //@f:off
     objectValidator.createValidator(req.body, {allowUndefined: true})
-        .field('value')
+        .field('class_id')
             .optional()
             .isLength(req.__mf('{value} must be from 1 to 255 symbols.', {value: req.__mf('Value')}), {min: 1, max: 255})
             .isInteger(req.__mf('Invalid value.'))
-        .field('date')
+        .field('teacher_id')
             .optional()
-            .isDate(req.__mf('Invalid date.'))
+        .isLength(req.__mf('{value} must be from 1 to 255 symbols.', {value: req.__mf('Value')}), {min: 1, max: 255})
+        .isInteger(req.__mf('Invalid value.'))
         .validate();
     //@f:on
 

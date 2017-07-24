@@ -5,11 +5,11 @@ services:
       context: .
       dockerfile: journal.dockerfile
     
-    command: nodemon -L -e js,json --debug=5858 --harmony-async-await app/main.js
+    command: nodemon -L -e js,json --debug=5858 --harmony-async-await server/server.js
     
     image: journal:development
     volumes:
-      - "./app:/usr/src/journal/app"
+      - "./server:/usr/src/journal/server"
     container_name: journal
     environment:
       NODE_ENV: "development"
@@ -30,10 +30,7 @@ services:
     
     
       - journal-postgres
-    
-    
-    
-  
+
   
   journal-postgres:
     image: postgres
@@ -42,6 +39,8 @@ services:
       POSTGRES_DB: "journaldb"
     ports:
       - "5432"
+
+
   
   
   

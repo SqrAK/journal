@@ -1,0 +1,126 @@
+{
+  "list": {
+    "method": "get",
+    "url": "/",
+    "secured": false,
+    "scheme": {
+      "query": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "skip": {
+            "type": "string",
+            "required": false,
+            "pattern": "^[0-9]+$"
+          },
+          "limit": {
+            "type": "string",
+            "required": false,
+            "pattern": "^[0-9]+$"
+          },
+          "number": {
+            "type": "Integer"
+          },
+          "sort": {
+            "type": "string",
+            "required": false,
+            "enum": [
+              "number",
+              "subject_id"
+            ]
+          },
+          "direction": {
+            "type": "string",
+            "required": false,
+            "enum": [
+              "asc",
+              "desc"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "get": {
+    "method": "get",
+    "url": "/:id",
+    "secured": false,
+    "scheme": {
+      "params": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "required": true
+          }
+        }
+      }
+    }
+  },
+  "create": {
+    "method": "post",
+    "url": "/",
+    "secured": false,
+    "scheme": {
+      "body": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "number": {
+            "type": "Integer"
+          },
+          "subject_id": {
+            "type": "Integer"
+          }
+        }
+      }
+    }
+  },
+  "update": {
+    "method": "put",
+    "url": "/:id",
+    "secured": false,
+    "scheme": {
+      "params": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "required": true
+          }
+        }
+      },
+      "body": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "number": {
+            "type": "Integer"
+          },
+          "subject_id": {
+            "type": "Integer"
+          }
+        }
+      }
+    }
+  },
+  "remove": {
+    "method": "delete",
+    "url": "/:id",
+    "secured": false,
+    "scheme": {
+      "params": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "required": true
+          }
+        }
+      }
+    }
+  }
+}
