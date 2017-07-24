@@ -46,7 +46,13 @@ async function login(req, res) {
 
     jwt.setAuthorizationHeader(token, res);
 
-    res.status(HTTPStatus.OK).send();
+    // res.status(HTTPStatus.OK).send();
+    res.json({ data: token })
+    // res.json({
+    //     success: true,
+    //     message: 'Enjoy your token!',
+    //     token: token
+    // });
 }
 
 module.exports = {

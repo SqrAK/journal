@@ -18,7 +18,6 @@ function createRoutes(app) {
         {url: '/api/v1/system-info', file: '/api/v1/system-info'},
         {url: '/api/v1/user', file: '/api/v1/user'},
         {url: '/api/v1/security', file: '/api/v1/security'},
-        {url: '/api/v1/cats', file: '/api/v1/cats'},
         {url: '/api/v1/subject', file: '/api/v1/subject'},
         {url: '/api/v1/role', file: '/api/v1/role'},
         {url: '/api/v1/mark', file: '/api/v1/mark'},
@@ -39,43 +38,43 @@ function createRoutes(app) {
     app.use(bodyParser.urlencoded({extended: false}));
     app.use(bodyParser.json());
 
-    app.post('/marks', function (req, res) {
-        models.Mark.findAll({
-            // include: [{ all: true, nested: true }]
-            include: [
-                {
-                    model: models.User
-                    // as: 'Student'
+    // app.post('/marks', function (req, res) {
+    //     models.Mark.findAll({
+    //         // include: [{ all: true, nested: true }]
+    //         include: [
+    //             {
+    //                 model: models.User
+    //                 // as: 'Student'
+    //
+    //             },
+    //
+    //             {
+    //                 model: models.Subject,
+    //                 where: { name: req.body.name }
+    //             }
+    //         ]
+    //     }).then(function (subj) {
+    //             res.json(subj);
+    //         });
+    // });
 
-                },
+    // app.get('/subjects', function (req, res) {
+    //
+    //     models.Subject.findAll({}).then(function (subj) {
+    //         res.json(subj);
+    //     });
+    // });
 
-                {
-                    model: models.Subject,
-                    where: { name: req.body.name }
-                }
-            ]
-        }).then(function (subj) {
-                res.json(subj);
-            });
-    });
-
-    app.get('/subjects', function (req, res) {
-
-        models.Subject.findAll({}).then(function (subj) {
-            res.json(subj);
-        });
-    });
-
-    app.get('/students', function (req, res) {
-        models.User.findAll({
-            include: [{
-                model: models.Role,
-                where: {name: "Ученик"}
-            }]
-        }).then(function (subj) {
-            res.json(subj);
-        });
-    });
+    // app.get('/students', function (req, res) {
+    //     models.User.findAll({
+    //         include: [{
+    //             model: models.Role,
+    //             where: {name: "Ученик"}
+    //         }]
+    //     }).then(function (subj) {
+    //         res.json(subj);
+    //     });
+    // });
 }
 
 module.exports = {

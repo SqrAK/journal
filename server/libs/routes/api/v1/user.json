@@ -83,5 +83,10 @@
         }
       }
     }
+  },
+  "student": {
+    "method": "get",
+    "url": "/student",
+    "secured": false
   }
 }

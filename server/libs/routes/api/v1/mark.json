@@ -47,7 +47,7 @@
   },
   "get": {
     "method": "get",
-    "url": "/:id",
+    "url": "/get/:id",
     "secured": false,
     "scheme": {
       "params": {
@@ -113,23 +113,13 @@
         "type": "object",
         "additionalProperties": false,
         "properties": {
-          "value": {
-            "type": "Integer",
-            "required": true
+          "name": {
+            "type": "String"
           },
-          "student_id": {
-            "type": "Integer"
+          "bossName": {
+            "type": "String"
           },
-          "class_id": {
-            "type": "Integer"
-          },
-          "teacher_id": {
-            "type": "Integer"
-          },
-          "subject_id": {
-            "type": "Integer"
-          },
-          "date": {
+          "birthDate": {
             "type": "date-time"
           }
         }
@@ -152,5 +142,22 @@
         }
       }
     }
+  },
+  "subject": {
+    "method": "get",
+    "url": "/:name",
+    "secured": false,
+    "scheme": {
+      "params": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "required": true
+          }
+        }
+      }
+  }
   }
 }

@@ -191,10 +191,33 @@ async function getVerifyLink(req, res) {
     res.status(HTTPStatus.NO_CONTENT).send();
 }
 
+async function student(req, res) {
+    let user = await sequelize.transaction(async t => {
+            return await models.User.findAll({
+                include: [{
+                    model: models.Role,
+                    where: {name: "Ученик"}
+                }],
+                transaction: t
+            });
+        }
+    );
+
+    if (!user) {
+        throw new errors.NotFoundError(req.__mf('{value} is not found.', {value: req.__mf('User')}));
+    }
+
+    res.json({
+        user:user
+        // user: _.pickExt(user, ['login', 'id'])
+    });
+}
+
 module.exports = {
     get: get,
     create: create,
     update: update,
     verifyEmail: verifyEmail,
-    getVerifyLink: getVerifyLink
+    getVerifyLink: getVerifyLink,
+    student:student
 };

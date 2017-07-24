@@ -1,20 +1,25 @@
 var subjects;
 $(document).ready(function () {
 
-    createSubjectSelect();
-
-    $.get("http://localhost:3000/students", function (students) {
-        console.log(students);
-    });
+    // createSubjectSelect();
+    createInput();
+    // $.get("http://localhost:3000/students", function (students) {
+    //     console.log(students);
+    // });
 
     // $.get("http://localhost:3000/subjects", function (students) {
     //     console.log(students);
     // });
 
-    $.post("http://localhost:3000/marks", {name: "Математика"}, function (data) {
-        console.log(data);
-        createTableMarks(data);
-    });
+    // $.get("http://localhost:3000/api/v1/mark/Математика", function (data) {
+    //     console.log(data);
+    //     createTableMarks(data.mark);
+    // });
+
+    // $.post("http://localhost:3000/api/v1/security/login", {login: "МарьВанна", password: "1234"}, function (data) {
+    //     console.log(data);
+    //     // createTableMarks(data);
+    // });
 
 
     function createInput() {
@@ -47,6 +52,7 @@ $(document).ready(function () {
         );
 
     }
+
 
     function createTableMarks(marks) {
         //change query
@@ -186,16 +192,13 @@ $(document).ready(function () {
     }
 
     function createSubjectSelect() {
-        $.get("http://localhost:3000/subjects", function (subjects) {
+        $.get("http://localhost:3000/api/v1/subject", function (subjects) {
             console.log(subjects);
             var SelectSubject = React.createClass({
 
                 onChangeHandler: function (e) {
                     //Change subject
                     alert("Change subject");
-                    $.post("http://localhost:3000/marks", {name: "Математика"}, function (data) {
-                        createTableMarks(data);
-                    });
                 },
                 render: function () {
                     var data = this.props.data;
@@ -218,7 +221,7 @@ $(document).ready(function () {
             });
 
             ReactDOM.render(
-                <SelectSubject data={subjects}/>,
+                <SelectSubject data={subjects.subject}/>,
                 document.getElementById('subjects')
             );
 

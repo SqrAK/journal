@@ -5,7 +5,7 @@
       "first_name": "Мария" ,
       "last_name": "Ивановна",
       "login": "МарьВанна",
-      "password": "",
+      "password": "123",
       "email": "",
       "status": "ACTIVE",
       "verified": true,

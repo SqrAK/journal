@@ -179,10 +179,54 @@ async function remove(req, res) {
     res.status(HTTPStatus.NO_CONTENT).send();
 }
 
+/**
+ * GET /api/v1/mark/subject
+ * @param req req
+ * @param res res
+ */
+
+async function subject(req, res) {
+    //@f:off
+    objectValidator.createValidator(req.query)
+        .field('value')
+        .optional()
+        .isLength(req.__mf('{value} must be from 1 to 255 symbols.', {value: req.__mf('Value')}), {min: 1, max: 255})
+        .isInteger(req.__mf('Please provide valid value.'))
+        .validate();
+    //@f:on
+
+    let mark = await sequelize.transaction(async t => {
+            // chain all your queries here. make sure you return them.
+            return await models.Mark.findAll({
+
+                include: [
+                    {
+                        model: models.User
+                        // as: 'Student'
+
+                    },
+                    {
+                        model: models.Subject,
+                        where: { name: req.params.name }
+                    }
+                ],
+                transaction: t
+            });
+        }
+    );
+
+    res.json({
+        mark: mark
+        // mark
+    });
+}
+
+
 module.exports = {
     list: list,
     get: get,
     create: create,
     update: update,
-    remove: remove
+    remove: remove,
+    subject:subject
 };

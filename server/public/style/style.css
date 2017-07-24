@@ -49,7 +49,6 @@ table tr th{
     background-position: right center;
     background-repeat: no-repeat;
     cursor: pointer;
-    /*добавить треугольник*/
 }
 
 .headerSortDown{
@@ -62,6 +61,8 @@ table tr th{
 form.main-form{
     width: 500px;
     margin: 0 auto;
-    display: none;
+}
+#form-login{
+    margin: 50px;
 }
 
