@@ -15,7 +15,7 @@ class App extends Component {
     return <div>
       <User name={user.name} />
       <div className="wrapper">
-      <Subject name={subject.name} />
+      <Subject subject={subject.subject} />
       <Mark marks={mark.marks}/>
       </div>
       <Page photos={page.photos} year={page.year} setYear={setYear} />

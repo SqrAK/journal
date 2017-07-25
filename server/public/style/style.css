@@ -32,13 +32,13 @@ header .sing-out{
     margin-top: 20px;
     padding: 0 30px;
 }
-.filt h5{
+ h5{
     float: left;
 }
-.filt .subject{
+ .subject{
     margin: 7px 20px;
 }
-.filt input{
+ input{
     margin: 5px 10px;
 }
 #table{

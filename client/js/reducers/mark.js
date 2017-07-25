@@ -24,6 +24,6 @@ const initialState = {
     ]
 }
 
-export default function user(state = initialState) {
+export default function mark(state = initialState) {
     return state
 }

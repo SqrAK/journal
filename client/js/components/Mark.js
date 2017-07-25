@@ -1,8 +1,29 @@
 import React, { PropTypes, Component } from 'react'
+import axios from 'axios';
 
 export default class Mark extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            mark: []
+        };
+    }
+
+    componentDidMount() {
+        axios.get(`http://localhost:3000/api/v1/mark/Математика`)
+            .then(res => {
+                //const posts = res.data.mark;
+                 const mark = res.data.mark;
+
+                this.setState({ mark });
+            });
+    }
+
+
+
     render() {
-        const  marks  = this.props.marks
 
         return <table className="table table-bordered">
             <thead>
@@ -14,21 +35,22 @@ export default class Mark extends Component {
             </thead>
 
             <tbody>
-            {
-                marks.map((item, index) =>
-                    <tr key={index}>
-                        <td>
-                            {item.first_name + ' ' +item.last_name}
-                        </td>
-                        <td>
-                            {item.date}
-                        </td>
-                        <td>
-                            {item.value}
-                        </td>
-                    </tr>
-                )
-            }
+
+                {
+                    this.state.mark.map((item, index) =>
+                        <tr key={index}>
+                            <td>
+                                {item.User.first_name + ' ' +item.User.last_name}
+                            </td>
+                            <td>
+                                {item.date}
+                            </td>
+                            <td>
+                                {item.value}
+                            </td>
+                        </tr>
+                    )
+                }
             </tbody>
 
         </table>

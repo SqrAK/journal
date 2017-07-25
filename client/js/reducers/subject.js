@@ -2,7 +2,7 @@
  * Created by alice on 22.07.17.
  */
 const initialState = {
-    name: [
+    subject: [
         {
             name:"Математика"
         },
@@ -15,6 +15,6 @@ const initialState = {
     ]
 }
 
-export default function user(state = initialState) {
+export default function subject(state = initialState) {
     return state
 }
