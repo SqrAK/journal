@@ -42,10 +42,10 @@ async function list(req, res) {
     );
 
     res.json({
-        offset: pagingFilter.skip,
-        limit: pagingFilter.limit,
-        count: subjects.rows.length,
-        totalCount: subjects.count,
+        // offset: pagingFilter.skip,
+        // limit: pagingFilter.limit,
+        // count: subjects.rows.length,
+        // totalCount: subjects.count,
         subject: _.pickArrayExt(subjects.rows, ['name', 'id'])
     });
 }
@@ -91,9 +91,6 @@ async function create(req, res) {
         .validate();
     //@f:on
 
-    //It was made in order to not create empty fields in database
-    _.removeEmptyFieldsExt(req.body, '', undefined);
-
     let newSubject = await sequelize.transaction(async t => {
             // chain all your queries here. make sure you return them.
             return await models.Subject.create(req.body, {transaction: t});
@@ -131,9 +128,6 @@ async function update(req, res) {
             if (!subject) {
                 throw new errors.NotFoundError(req.__mf('{value} is not found.', {value: req.__mf('Subject')}), req.params.id);
             }
-
-            //it was made in order to delete empty fields from database
-            _.removeEmptyFieldsExt(req.body, '', null);
 
             _.assign(subject, req.body);
 

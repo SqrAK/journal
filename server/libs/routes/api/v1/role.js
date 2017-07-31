@@ -77,72 +77,6 @@ async function get(req, res) {
     });
 }
 
-/**
- * POST /api/v1/role
- * @param req req
- * @param res res
- */
-
-async function create(req, res) {
-    //@f:off
-    objectValidator.createValidator(req.body)
-        .field('name')
-        .isLength(req.__mf('{value} must be from 1 to 255 symbols.', {value: req.__mf('Name')}), {min: 1, max: 255})
-        .validate();
-    //@f:on
-
-    //It was made in order to not create empty fields in database
-    _.removeEmptyFieldsExt(req.body, '', undefined);
-
-    let newRole = await sequelize.transaction(async t => {
-            // chain all your queries here. make sure you return them.
-            return await models.Role.create(req.body, {transaction: t});
-        }
-    );
-
-    res.json({
-        id: newRole.id
-    });
-}
-
-/**
- * PUT /api/v1/role/:id
- * @param req req
- * @param res res
- */
-
-async function update(req, res) {
-    //@f:off
-    objectValidator.createValidator(req.body, {allowUndefined: true})
-        .field('name')
-        .isLength(req.__mf('{value} must be from 1 to 255 symbols.', {value: req.__mf('Name')}), {min: 1, max: 255})
-        .validate();
-    //@f:on
-
-    await sequelize.transaction(async t => {
-            // chain all your queries here. make sure you return them.
-            let role = await models.Role.find({
-                where: {
-                    id : req.params.id
-                },
-                transaction: t
-            });
-
-            if (!role) {
-                throw new errors.NotFoundError(req.__mf('{value} is not found.', {value: req.__mf('Role')}), req.params.id);
-            }
-
-            //it was made in order to delete empty fields from database
-            _.removeEmptyFieldsExt(req.body, '', null);
-
-            _.assign(role, req.body);
-
-            await role.save({transaction: t});
-        }
-    );
-
-    res.status(HTTPStatus.NO_CONTENT).send();
-}
 
 /**
  * DELETE /api/v1/role/:id
@@ -174,7 +108,5 @@ async function remove(req, res) {
 module.exports = {
     list: list,
     get: get,
-    create: create,
-    update: update,
     remove: remove
 };

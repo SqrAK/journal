@@ -1,12 +1,22 @@
-import { combineReducers } from 'redux'
-import page from './page'
-import user from './user'
-import subject from './subject'
-import mark from './mark'
+import { combineReducers } from 'redux';
+import PostsReducer from './reducer_posts';
+import StudentsReducer from './reducer_students';
+import MarksReducer from './reducer_marks';
+import SubjectsReducer from './reducer_subjects';
+import UserReducer from './reducer_user';
+import ValidateUserFieldsReducer from './reducer_validateUserFields';
+import ResendEmailReducer from './reducer_resendEmail';
+import { reducer as formReducer } from 'redux-form';
 
-export default combineReducers({
-  page,
-  user,
-  subject,
-  mark
-})
+const rootReducer = combineReducers({
+  user: UserReducer,
+  validateFields: ValidateUserFieldsReducer,
+  posts: PostsReducer, //<-- Posts
+  students: StudentsReducer,
+  marks: MarksReducer,
+  subjects: SubjectsReducer,
+  form: formReducer, // <-- redux-form
+  resendEmail: ResendEmailReducer
+});
+
+export default rootReducer;

@@ -32,22 +32,34 @@ async function list(req, res) {
 
     let mark = await sequelize.transaction(async t => {
             // chain all your queries here. make sure you return them.
-            return await models.Mark.findAndCountAll({
-                where: entitiesFilter,
-                order: sortCondition,
-                offset: pagingFilter.skip,
-                limit: pagingFilter.limit,
+            return await models.Mark.findAll({
+                include: [
+                    {
+                        model: models.User
+                        // as: 'Student'
+
+                    },
+                    {
+                        model: models.Subject,
+                        where: { name: req.params.name }
+                    }
+                ],
+                // where: entitiesFilter,
+                // order: sortCondition,
+                // offset: pagingFilter.skip,
+                // limit: pagingFilter.limit,
                 transaction: t
             });
         }
     );
 
     res.json({
-        offset: pagingFilter.skip,
-        limit: pagingFilter.limit,
-        count: mark.rows.length,
-        totalCount: mark.count,
-        mark: _.pickArrayExt(mark.rows, ['value', 'date', 'student_id', 'teacher_id', 'class_id', 'subject_id', 'id'])
+        // offset: pagingFilter.skip,
+        // limit: pagingFilter.limit,
+        // count: mark.rows.length,
+        // totalCount: mark.count,
+        // mark: _.pickArrayExt(mark.rows, ['value', 'date', 'student_id', 'teacher_id', 'class_id', 'subject_id', 'id'])
+        mark:mark
     });
 }
 
@@ -185,7 +197,7 @@ async function remove(req, res) {
  * @param res res
  */
 
-async function subject(req, res) {
+async function student(req, res) {
     //@f:off
     objectValidator.createValidator(req.query)
         .field('value')
@@ -201,8 +213,8 @@ async function subject(req, res) {
 
                 include: [
                     {
-                        model: models.User
-                        // as: 'Student'
+                        model: models.User,
+                        where: { id: req.params.id }
 
                     },
                     {
@@ -228,5 +240,5 @@ module.exports = {
     create: create,
     update: update,
     remove: remove,
-    subject:subject
+    student:student
 };

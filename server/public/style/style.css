@@ -9,60 +9,50 @@
 
     background-color: #dddddd;
 }
-header{
+.header{
     padding: 20px 10px 15px 10px;
     overflow: hidden;
     width: 960px;
     margin: 0 auto;
 }
-header ul{
+.header ul{
     float: left;
 }
-header .name{
+
+.header .name{
     padding: 8px;
     margin-right: 50px;
     float: left;
     text-transform: uppercase;
     font-weight: bold;
 }
-header .sing-out{
+
+.user-nav{
     float: right;
 }
-.filt{
-    margin-top: 20px;
-    padding: 0 30px;
-}
+
+
  h5{
     float: left;
 }
- .subject{
-    margin: 7px 20px;
+
+.subject{
+    margin: 20px;
 }
+
+select{
+    margin-left: 10px;
+}
+
  input{
     margin: 5px 10px;
 }
-#table{
-    padding-top:50px;
-}
-table tr th{
-    background-image: url("../img/bg.gif");
-    background-position: right center;
-    background-repeat: no-repeat;
-    cursor: pointer;
-}
 
-.headerSortDown{
-    background-image: url("../img/desc.gif");
-}
-.headerSortUp{
-    background-image: url("../img/asc.gif");
+.ReactTable{
+    margin-top:50px;
 }
 
 form.main-form{
     width: 500px;
-    margin: 0 auto;
+    margin: 50px auto;
 }
-#form-login{
-    margin: 50px;
-}
-

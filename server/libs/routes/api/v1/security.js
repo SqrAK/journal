@@ -14,6 +14,8 @@ const models = require('models'),
  * @param req req
  * @param res res
  */
+
+
 async function login(req, res) {
     //@f:off
     objectValidator.createValidator(req.body)
@@ -23,13 +25,24 @@ async function login(req, res) {
             .isNotEmpty(req.__mf('{value} is required.', {value: req.__mf('Password')}))
         .validate();
     //@f:on
+    let name = req.body.login.split(" ");
     let user = await models.User.findOne({
-        where: {login: req.body.login}
+        include: [
+            {
+                model: models.Role
+            }
+        ],
+        where: {
+            first_name : name[0],
+            last_name: name[1]
+            // login: req.body.login
+        }
     });
 
     if (!user) {
         throw new errors.SecurityError(req.__mf('{value} is not found.', {value: req.__mf('User')}));
     }
+
 
     if (!(await user.comparePasswordAsync(req.body.password))) {
         throw new errors.SecurityError(req.__mf('Login and password combination is not found.'));
@@ -47,12 +60,11 @@ async function login(req, res) {
     jwt.setAuthorizationHeader(token, res);
 
     // res.status(HTTPStatus.OK).send();
-    res.json({ data: token })
-    // res.json({
-    //     success: true,
-    //     message: 'Enjoy your token!',
-    //     token: token
-    // });
+    // res.end("sdasds");
+    res.json({
+        user:user,
+        token: token
+    });
 }
 
 module.exports = {

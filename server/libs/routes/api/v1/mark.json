@@ -1,45 +1,17 @@
 {
   "list": {
     "method": "get",
-    "url": "/",
+    "url": "/:name",
     "secured": false,
     "scheme": {
-      "query": {
+
+      "params": {
         "type": "object",
         "additionalProperties": false,
         "properties": {
-          "skip": {
+          "name": {
             "type": "string",
-            "required": false,
-            "pattern": "^[0-9]+$"
-          },
-          "limit": {
-            "type": "string",
-            "required": false,
-            "pattern": "^[0-9]+$"
-          },
-          "value": {
-            "type": "Integer"
-          },
-          "sort": {
-            "type": "string",
-            "required": false,
-            "enum": [
-              "value",
-              "date",
-              "teacher_id",
-              "class_id",
-              "subject_id",
-              "student_id"
-            ]
-          },
-          "direction": {
-            "type": "string",
-            "required": false,
-            "enum": [
-              "asc",
-              "desc"
-            ]
+            "required": true
           }
         }
       }
@@ -143,11 +115,12 @@
       }
     }
   },
-  "subject": {
+  "student": {
     "method": "get",
-    "url": "/:name",
+    "url": "/:name/:id",
     "secured": false,
     "scheme": {
+
       "params": {
         "type": "object",
         "additionalProperties": false,
@@ -155,9 +128,13 @@
           "name": {
             "type": "string",
             "required": true
+          },
+          "id": {
+            "type": "string",
+            "required": true
           }
         }
       }
-  }
+    }
   }
 }

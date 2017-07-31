@@ -57,49 +57,6 @@
       }
     }
   },
-  "create": {
-    "method": "post",
-    "url": "/",
-    "secured": false,
-    "scheme": {
-      "body": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "name": {
-            "type": "String",
-            "required": true
-          }
-        }
-      }
-    }
-  },
-  "update": {
-    "method": "put",
-    "url": "/:id",
-    "secured": false,
-    "scheme": {
-      "params": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "id": {
-            "type": "string",
-            "required": true
-          }
-        }
-      },
-      "body": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "name": {
-            "type": "String"
-          }
-        }
-      }
-    }
-  },
   "remove": {
     "method": "delete",
     "url": "/:id",
