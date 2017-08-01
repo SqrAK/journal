@@ -47229,7 +47229,7 @@
 	if (process.env.NODE_ENV === 'production' || location && location.hostname !== 'localhost') {
 	  module.exports = __webpack_require__(570);
 	} else {
-	  module.exports = __webpack_require__(585);
+	  module.exports = __webpack_require__(583);
 	}
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
@@ -47250,7 +47250,7 @@
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
-	var _reduxPromise = __webpack_require__(578);
+	var _reduxPromise = __webpack_require__(576);
 
 	var _reduxPromise2 = _interopRequireDefault(_reduxPromise);
 
@@ -47293,10 +47293,6 @@
 
 	var _reducer_user2 = _interopRequireDefault(_reducer_user);
 
-	var _reducer_resendEmail = __webpack_require__(576);
-
-	var _reducer_resendEmail2 = _interopRequireDefault(_reducer_resendEmail);
-
 	var _reduxForm = __webpack_require__(321);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -47306,8 +47302,7 @@
 	  students: _reducer_students2.default,
 	  marks: _reducer_marks2.default,
 	  subjects: _reducer_subjects2.default,
-	  form: _reduxForm.reducer, // <-- redux-form
-	  resendEmail: _reducer_resendEmail2.default
+	  form: _reduxForm.reducer // <-- redux-form
 	});
 
 	exports.default = rootReducer;
@@ -47539,112 +47534,13 @@
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	exports.default = function () {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : INITIAL_STATE;
-	  var action = arguments[1];
-
-	  var error = void 0;
-	  switch (action.type) {
-
-	    case _resendEmail.RESEND_VALIDATION_EMAIL:
-	      return _extends({}, state, { sentAgain: false, error: null, loading: true });
-	    case _resendEmail.RESEND_VALIDATION_EMAIL_SUCCESS:
-	      return _extends({}, state, { sentAgain: true, error: null, loading: false });
-	    case _resendEmail.RESEND_VALIDATION_EMAIL_FAILURE:
-	      error = action.payload.data || { message: action.payload.message }; //2nd one is network or server down errors       
-	      return _extends({}, state, { sentAgain: false, error: error, loading: false });
-	    case _resendEmail.RESET_RESEND_EMAIL_STATE:
-	      return _extends({}, state, { sentAgain: false, error: null, loading: false });
-	    default:
-	      return state;
-	  }
-	};
-
-	var _resendEmail = __webpack_require__(577);
-
-	var INITIAL_STATE = { sentAgain: false, error: null, loading: false };
-
-/***/ }),
-/* 577 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.RESET_RESEND_EMAIL_STATE = exports.RESEND_VALIDATION_EMAIL_FAILURE = exports.RESEND_VALIDATION_EMAIL_SUCCESS = exports.RESEND_VALIDATION_EMAIL = undefined;
-	exports.resendValidationEmail = resendValidationEmail;
-	exports.resendValidationEmailSuccess = resendValidationEmailSuccess;
-	exports.resendValidationEmailFailure = resendValidationEmailFailure;
-	exports.resetResendEmailState = resetResendEmailState;
-
-	var _axios = __webpack_require__(289);
-
-	var _axios2 = _interopRequireDefault(_axios);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	//Resend validation email
-	var RESEND_VALIDATION_EMAIL = exports.RESEND_VALIDATION_EMAIL = 'RESEND_VALIDATION_EMAIL';
-	var RESEND_VALIDATION_EMAIL_SUCCESS = exports.RESEND_VALIDATION_EMAIL_SUCCESS = 'RESEND_VALIDATION_EMAIL_SUCCESS';
-	var RESEND_VALIDATION_EMAIL_FAILURE = exports.RESEND_VALIDATION_EMAIL_FAILURE = 'RESEND_VALIDATION_EMAIL_FAILURE';
-	var RESET_RESEND_EMAIL_STATE = exports.RESET_RESEND_EMAIL_STATE = 'RESET_RESEND_EMAIL_STATE';
-
-	var ROOT_URL = location.href.indexOf('localhost') > 0 ? 'http://localhost:3000/api' : '/api';
-
-	function resendValidationEmail(tokenFromStorage) {
-	  var request = (0, _axios2.default)({
-	    method: 'get',
-	    url: ROOT_URL + '/resendValidationEmail',
-	    headers: { 'Authorization': 'Bearer ' + tokenFromStorage }
-	  });
-
-	  return {
-	    type: RESEND_VALIDATION_EMAIL,
-	    payload: request
-	  };
-	}
-
-	function resendValidationEmailSuccess(message) {
-	  return {
-	    type: RESEND_VALIDATION_EMAIL_SUCCESS,
-	    payload: message
-	  };
-	}
-
-	function resendValidationEmailFailure(error) {
-	  return {
-	    type: RESEND_VALIDATION_EMAIL_FAILURE,
-	    payload: error
-	  };
-	}
-
-	function resetResendEmailState() {
-	  return {
-	    type: RESET_RESEND_EMAIL_STATE
-	  };
-	}
-
-/***/ }),
-/* 578 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
 	exports.__esModule = true;
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	exports['default'] = promiseMiddleware;
 
-	var _fluxStandardAction = __webpack_require__(579);
+	var _fluxStandardAction = __webpack_require__(577);
 
 	function isPromise(val) {
 	  return val && typeof val.then === 'function';
@@ -47671,7 +47567,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 579 */
+/* 577 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47682,7 +47578,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _lodashIsplainobject = __webpack_require__(580);
+	var _lodashIsplainobject = __webpack_require__(578);
 
 	var _lodashIsplainobject2 = _interopRequireDefault(_lodashIsplainobject);
 
@@ -47701,7 +47597,7 @@
 	}
 
 /***/ }),
-/* 580 */
+/* 578 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -47712,9 +47608,9 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseFor = __webpack_require__(581),
-	    isArguments = __webpack_require__(582),
-	    keysIn = __webpack_require__(583);
+	var baseFor = __webpack_require__(579),
+	    isArguments = __webpack_require__(580),
+	    keysIn = __webpack_require__(581);
 
 	/** `Object#toString` result references. */
 	var objectTag = '[object Object]';
@@ -47810,7 +47706,7 @@
 
 
 /***/ }),
-/* 581 */
+/* 579 */
 /***/ (function(module, exports) {
 
 	/**
@@ -47864,7 +47760,7 @@
 
 
 /***/ }),
-/* 582 */
+/* 580 */
 /***/ (function(module, exports) {
 
 	/**
@@ -48099,7 +47995,7 @@
 
 
 /***/ }),
-/* 583 */
+/* 581 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -48110,8 +48006,8 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var isArguments = __webpack_require__(582),
-	    isArray = __webpack_require__(584);
+	var isArguments = __webpack_require__(580),
+	    isArray = __webpack_require__(582);
 
 	/** Used to detect unsigned integer values. */
 	var reIsUint = /^\d+$/;
@@ -48237,7 +48133,7 @@
 
 
 /***/ }),
-/* 584 */
+/* 582 */
 /***/ (function(module, exports) {
 
 	/**
@@ -48423,7 +48319,7 @@
 
 
 /***/ }),
-/* 585 */
+/* 583 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48435,7 +48331,7 @@
 
 	var _redux = __webpack_require__(197);
 
-	var _reduxPromise = __webpack_require__(578);
+	var _reduxPromise = __webpack_require__(576);
 
 	var _reduxPromise2 = _interopRequireDefault(_reduxPromise);
 
