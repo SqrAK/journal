@@ -46,6 +46,10 @@ async function get(req, res) {
 async function create(req, res) {
     //@f:off
     objectValidator.createValidator(req.body)
+        .field('first_name')
+        .isLength(req.__mf('{value} must be from 1 to 255 symbols.', {value: req.__mf('Login')}), {min: 1, max: 255})
+        .field('last_name')
+        .isLength(req.__mf('{value} must be from 1 to 255 symbols.', {value: req.__mf('Login')}), {min: 1, max: 255})
         .field('login')
             .isLength(req.__mf('{value} must be from 1 to 255 symbols.', {value: req.__mf('Login')}), {min: 1, max: 255})
         .field('password')
@@ -64,9 +68,10 @@ async function create(req, res) {
 
     _.assign(req.body,
         {
-            verified: false,
+            verified: true,
             verifyLinkExpiration: moment().add(1, 'days').unix(),
-            verifyToken: token
+            verifyToken: token,
+            role_id:1
         }
     );
     let newUser = await sequelize.transaction(async t => {

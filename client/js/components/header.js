@@ -7,22 +7,6 @@ class Header extends Component {
     router: PropTypes.object
   };
 
-  componentWillUnmount() {
-    //Important! If your component is navigating based on some global state(from say componentWillReceiveProps)
-    //always reset that global state back to null when you REMOUNT
-    this.props.resetMe();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if(nextProps.deletedPost.error && nextProps.deletedPost.error.message) {//delete failure
-      alert(nextProps.deletedPost.error.message || 'Could not delete. Please try again.');
-    } else if(nextProps.deletedPost.post && !nextProps.deletedPost.error) {//delete success
-      this.context.router.push('/');
-    } else if(this.props.user.user && !nextProps.user.user) {//logout (had user(this.props.user.user) but no loger the case (!nextProps.user.user))
-      this.context.router.push('/');
-    }
-  }
-
   renderSignInLinks(authenticatedUser) {
     if(authenticatedUser) {
       return (

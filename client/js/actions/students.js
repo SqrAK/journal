@@ -8,9 +8,6 @@ export const FETCH_STUDENTS = 'FETCH_STUDENTS';
 export const FETCH_STUDENTS_SUCCESS = 'FETCH_STUDENTS_SUCCESS';
 export const FETCH_STUDENTS_FAILURE = 'FETCH_STUDENTS_FAILURE';
 
-
-
-
 export function fetchStudents() {
     const request = axios({
         method: 'get',

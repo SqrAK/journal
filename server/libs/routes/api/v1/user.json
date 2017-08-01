@@ -51,6 +51,14 @@
         "type": "object",
         "additionalProperties": false,
         "properties": {
+          "first_name": {
+            "type": "string",
+            "required": true
+          },
+          "last_name": {
+            "type": "string",
+            "required": true
+          },
           "login": {
             "type": "string",
             "required": true
